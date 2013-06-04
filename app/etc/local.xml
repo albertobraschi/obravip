@@ -41,8 +41,8 @@
             <default_setup>
                 <connection>
                     <host><![CDATA[127.0.0.1]]></host>
-                    <username><![CDATA[root]]></username>
-                    <password><![CDATA[]]></password>
+                    <username><![CDATA[obravip]]></username>
+                    <password><![CDATA[vubad9Oh]]></password>
                     <dbname><![CDATA[obravip]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
