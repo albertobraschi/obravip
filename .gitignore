@@ -30,6 +30,7 @@ app/etc/modules/Mage_Weee.xml
 app/etc/modules/Mage_Widget.xml
 app/etc/modules/Mage_XmlConnect.xml
 app/etc/modules/Phoenix_Moneybookers.xml
+app/etc/local.xml
 app/etc/config.xml
 app/etc/enterprise.xml
 app/etc/local.xml.additional

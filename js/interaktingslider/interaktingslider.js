@@ -355,7 +355,7 @@ InteraktingSlider.prototype.run = function(){
 	}
 	
 	if(this.isAutoMode()){
-		setTimeout("interaktingslider.run()",500);
+		setTimeout("interaktingslider.run()",300);
 	}
 	
 	
