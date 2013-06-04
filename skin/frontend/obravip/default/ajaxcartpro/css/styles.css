@@ -1,0 +1,160 @@
+DIV.ajaxcartpro_progress{
+	border: 1px #E1DEDB solid;
+	display: block;
+	position: fixed;
+	text-align: center;
+	padding: 30px 20px 10px;
+	background-color: #ffffff;
+	z-index: 9999;
+    color: black;
+    min-width: 260px;
+    min-height: 50px;
+	/*position:absolute;*/
+	/*top: expression(parseInt(document.documentElement.scrollTop, 10) +window.ACPTop+ "px");*/
+}
+
+DIV.ajaxcartpro_confirm{
+	border: 1px #E1DEDB solid;
+	display: block;
+	position: fixed;
+	text-align: center !important;
+	padding: 20px;
+	background-color: #ffffff;
+	z-index: 9999;
+    color: black;
+    min-heigth:104px;
+    min-width: 260px;
+    height:auto!important;
+
+	/*position:absolute;*/
+	/*top: expression(parseInt(document.documentElement.scrollTop, 10) +200+ "px");*/
+}
+
+DIV.ajaxcartpro_confirm p{
+	width: 260px;
+}
+
+span#acp_product_name, #acp_product_options .product-name {
+	display: block;
+	color: #C02222;
+    font-family: 'MyriadProBoldCondensed';
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+#acp_product_options .price-box {text-align: center;}
+
+
+#aw_acp_continue, #aw_acp_checkout{
+	padding:0;
+	line-height:35px;
+	height:35px;
+	margin:0px auto;
+	display:block;
+	font-family: 'myriad pro';
+	text-transform: uppercase;
+	font-size: 15px;
+	text-decoration:none;
+	color:#fff;
+	width:85%;
+	text-align: center;
+	text-align: center;
+}
+
+#aw_acp_continue:hover {
+	background:#58524D;
+}
+#aw_acp_checkout:hover{
+	background:#00A144;
+}
+
+#aw_acp_continue{
+	background:#6B645E;
+}
+
+#aw_acp_checkout{
+	background:#00D477;
+}
+#acp_product_options #aw_acp_checkout{
+	margin-top:10px !important;
+}
+
+#acp_configurable_block dt
+{
+    text-align: left;
+    padding-left: 10px;
+}
+
+#acp_configurable_block .price
+{
+    font-size: 16px;
+}
+
+#acp_configurable_block .product-name
+{
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#acp_configurable_block .buttons_acp_cb {
+	margin:5px 0px 20px 40px;
+}
+
+#acp_configurable_block .product-options dd select {
+	width: 85%;
+}
+
+#acp_configurable_block  input.input-text:focus, #acp_configurable_block  select:focus, #acp_configurable_block  textarea:focus{
+	background-color:#F4F3F2;
+}
+
+#acp_configurable_block  select {
+	cursor:pointer;
+}
+
+#acp_configurable_block .product-options dt label {
+	font-family: 'myriad pro';
+	text-transform: uppercase;
+	font-size: 15px;
+}
+#acp_configurable_block .product-options dl.last {margin-left: 45px;}
+
+#acp-overlay
+{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:#000;
+    -moz-opacity: 0.3;
+    opacity:.30;
+    filter: alpha(opacity=30);
+    z-index: 100;
+}
+#acp-overlay[id]{ /* IE6 and below Can't See This */
+    position:fixed;
+}
+
+#acp_product_options
+{
+    display: block;
+    min-width: 350px;
+    height: auto !important;
+    position: fixed;
+    z-index:1000;
+    background-color: white;
+    padding: 20px 0;
+    /*position:absolute;*/
+    /*top: expression(parseInt(document.documentElement.scrollTop, 10) +window.ACPTop+ "px");*/
+}
+
+#product-options-wrapper
+{
+     margin:0;
+}
+.map-popup
+{
+    z-index: 1001 !important;
+}

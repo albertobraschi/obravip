@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	
+	<cms_index_index>
+		<reference name="head">
+			<action method="addJs"><script>interaktingslider/interaktingslider.js</script></action>
+		</reference>
+		
+		<reference name="content">
+			<block type="interaktingslider/interaktingslider" name="slider" before="-" template="interaktingslider/slider.phtml" />  
+		</reference>
+	</cms_index_index>
+	
+</layout>

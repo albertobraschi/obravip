@@ -1,0 +1,158 @@
+<?php
+/**
+ * Indexa - Customer. Adicionar campos ao checkout.
+ *
+ * @title      Magento -> Indexa Customer module
+ * @category   Custom customer fields
+ * @package    Indexa_Customer
+ * @author     Indexa Development Team -> desenvolvimento [at] indexainternet [dot] com  [dot] br
+ * @copyright  Copyright (c) 2011 Indexa - http://www.indexainternet.com.br
+ */
+
+?>
+<div class="pageTitle">
+    <h2><?php echo $this->__('Edit Account Information') ?></h2>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="form-validate">
+    <div class="fieldset" style="margin-top: 20px;">
+        <?php echo $this->getBlockHtml('formkey')?>
+        <ul class="form-list">
+            <li class="fields">
+                <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getCustomer())->toHtml() ?>
+            </li>
+            <li>
+                <label for="email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                <div class="input-box">
+                    <input type="text" name="email" id="email" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />
+                </div>
+            </li>
+            
+			<li class="control">
+				<div class="input-box">
+					<input type="checkbox" name="designer_arquiteto" class="checkbox" id="designer_arquiteto"<?php if($this->getCustomer()->getDesignerArquiteto()): ?> checked="checked"<?php endif; ?> />
+				</div>
+				<label for="designer_arquiteto"><?php echo $this->__('Designer/Arquiteto?') ?></label>
+			</li>
+            
+            <li class="control">
+                <input type="checkbox" name="faturar_contra" id="faturar_contra" value="1" onclick="escondeEmpresa();" title="<?php echo $this->__('Faturar Contra Empresa?') ?>"<?php if($this->getCustomer()->getFaturarContra()==1): ?> checked="checked"<?php endif; ?> class="checkbox" /><label for="faturar_contra"><?php echo $this->__('Faturar Contra Empresa?') ?></label>
+            </li>
+            
+			<li id="enterprise-container-01">
+				<label class="required" for="razao_social"><em>*</em><?php echo $this->__('Razão Social') ?></label>
+				<div class="input-box">
+			    	<input type="text" class="validate-razao_social required-entry input-text" title="<?php echo $this->__('Razão Social') ?>" value="<?php echo $this->htmlEscape($this->getCustomer()->getRazaoSocial()) ?>" name="razao_social" id="razao_social">
+				</div>					
+				<label class="required" for="cnpj"><em>*</em><?php echo $this->__('CNPJ') ?></label>
+				<div class="input-box">
+			    	<input type="text" onkeyup="mask(this, msk_cnpj);" class="validate-cnpj required-entry input-text" title="<?php echo $this->__('CNPJ') ?>" value="<?php echo $this->htmlEscape($this->getCustomer()->getCnpj()) ?>" name="cnpj" id="cnpj" maxlength="18">
+				</div>					
+            </li>      
+			<li id="enterprise-container-02">
+				<label class="required" for="ie"><em>*</em><?php echo $this->__('Inscrição Estadual') ?> <?php echo $this->__('(Digitar "ISENTO" caso não possuir)') ?></label>
+				<div class="input-box">
+			    	<input type="text" class="validate-ie required-entry input-text" title="<?php echo $this->__('Inscrição Estadual') ?> <?php echo $this->__('(Digitar "ISENTO" caso não possuir)') ?>" value="<?php echo $this->htmlEscape($this->getCustomer()->getIe()) ?>" name="ie" id="ie" maxlength="18">
+				</div> 				
+            </li>        
+            
+        <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+        <?php if ($_dob->isEnabled()): ?>
+            <li><?php echo $_dob->setDate($this->getCustomer()->getDob())->toHtml() ?></li>
+        <?php endif ?>
+        <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+        <?php if ($_taxvat->isEnabled()): ?>
+            <li><?php echo $_taxvat->setTaxvat($this->getCustomer()->getTaxvat())->toHtml() ?></li>
+        <?php endif ?>
+        <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+        <?php if ($_gender->isEnabled()): ?>
+            <li><?php echo $_gender->setGender($this->getCustomer()->getGender())->toHtml() ?></li>
+        <?php endif ?>
+            <li class="control">
+                <input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="<?php echo $this->__('Change Password') ?>"<?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> class="checkbox" /><label for="change_password"><?php echo $this->__('Change Password') ?></label>
+            </li>
+        </ul>
+    </div>
+    <div class="fieldset" style="display:none;">
+        <h2 class="legend"><?php echo $this->__('Change Password') ?></h2>
+        <ul class="form-list">
+            <li>
+                <label for="current_password" class="required"><em>*</em><?php echo $this->__('Current Password') ?></label>
+                <div class="input-box">
+                    <input type="password" title="<?php echo $this->__('Current Password') ?>" class="input-text" name="current_password" id="current_password" />
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="password" class="required"><em>*</em><?php echo $this->__('New Password') ?></label>
+                    <div class="input-box">
+                        <input type="password" title="<?php echo $this->__('New Password') ?>" class="input-text validate-password" name="password" id="password" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="confirmation" class="required"><em>*</em><?php echo $this->__('Confirm New Password') ?></label>
+                    <div class="input-box">
+                        <input type="password" title="<?php echo $this->__('Confirm New Password') ?>" class="input-text validate-cpassword" name="confirmation" id="confirmation" />
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+        <button type="submit" title="<?php echo $this->__('Save') ?>" class="button"><span><span><?php echo $this->__('Save') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    function setPasswordForm(arg){
+        if(arg){
+            $('current_password').up(3).show();
+            $('current_password').addClassName('required-entry');
+            $('password').addClassName('required-entry');
+            $('confirmation').addClassName('required-entry');
+
+        }else{
+            $('current_password').up(3).hide();
+            $('current_password').removeClassName('required-entry');
+            $('password').removeClassName('required-entry');
+            $('confirmation').removeClassName('required-entry');
+        }
+    }
+    
+    <?php if($this->getCustomer()->getChangePassword()): ?>
+        setPasswordForm(true);
+    <?php endif; ?>
+
+    var escondeEmpresa = function ()
+    {
+        if ($('faturar_contra').checked == false)
+        {
+        	$('enterprise-container-01').style.display = 'none';
+        	$('enterprise-container-02').style.display = 'none';
+        }
+        else
+        {
+        	$('enterprise-container-01').style.display = 'list-item';
+        	$('enterprise-container-02').style.display = 'list-item';
+        }
+    }
+    var corrigeVars = function ()
+    {
+        if ($('faturar_contra').checked == false)
+        {
+        	var _input = document.createElement("input");
+        	_input.setAttribute("type", "hidden");
+        	_input.setAttribute("name", "faturar_contra");
+        	_input.setAttribute("value", "");
+        	$('form-validate').appendChild(_input);
+        }
+    }
+    Event.observe(window, 'load', escondeEmpresa);
+    Event.observe($('form-validate'), 'submit', corrigeVars);
+    if ($('taxvat')) { $('taxvat').addClassName('validate-cpf'); Event.observe($('taxvat'),'keyup',function () { mask($('taxvat'), msk_cpf) } ); }
+    
+//]]>
+</script>

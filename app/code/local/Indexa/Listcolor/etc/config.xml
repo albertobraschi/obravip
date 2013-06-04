@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento Indexa Shipping Module
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @title      Magento -> Indexa Shipping Module
+ * @category   Indexa
+ * @package    Indexa_Matrixrate
+ * @copyright  Copyright (c) 2010 Indexa Internet (http://www.indexainternet.com.br)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author     Indexa Development Team <desenvolvimento@indexainternet.com.br> / Karen Baker <enquiries@auctionmaid.com>
+*/
+-->
+<config>
+	<modules>
+		<Indexa_Listcolor>
+			<version>0.1.0</version>
+			<depends>
+				<Mage_Catalog />
+			</depends>
+		</Indexa_Listcolor>
+    </modules>
+    <global>
+		<resources>
+		    <indexa_listcolor_setup>
+		      <setup>
+		        <module>Indexa_Listcolor</module>
+		        <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+		      </setup>
+		      <connection>
+		        <use>core_setup</use>
+		      </connection>
+		    </indexa_listcolor_setup>
+		    <indexa_listcolor_write>
+		      <connection>
+		        <use>core_write</use>
+		      </connection>
+		    </indexa_listcolor_write>
+		    <indexa_listcolor_read>
+		      <connection>
+		        <use>core_read</use>
+		      </connection>
+		    </indexa_listcolor_read>
+		</resources>
+        <blocks>
+            <indexa_listcolor>
+                <class>Indexa_Listcolor_Block</class>
+          	</indexa_listcolor>
+        </blocks>
+        <models>
+            <indexa_listcolor>
+                <class>Indexa_Listcolor_Model</class>
+          	</indexa_listcolor>
+        </models>
+        <helpers>
+            <indexa_listcolor>
+                <class>Indexa_Listcolor_Helper</class>
+          	</indexa_listcolor>
+        </helpers>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <indexa_listcolor>
+                    <file>indexa/listcolor.xml</file>
+                </indexa_listcolor>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <events>
+            <catalog_product_save_before>
+                <observers>
+                    <indexa_listcolor>
+                        <type>singleton</type>
+                        <class>indexa_listcolor/observer</class>
+                        <method>gatherInformationFromOthers</method>
+                    </indexa_listcolor>
+                </observers>
+            </catalog_product_save_before>
+            <catalog_product_save_after>
+                <observers>
+                    <indexa_listcolor>
+                        <type>singleton</type>
+                        <class>indexa_listcolor/observer</class>
+                        <method>syncColorsToOthers</method>
+                    </indexa_listcolor>
+                </observers>
+            </catalog_product_save_after>
+        </events>
+    </adminhtml>
+</config>

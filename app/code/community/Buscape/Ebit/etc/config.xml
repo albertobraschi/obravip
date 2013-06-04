@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to suporte.developer@buscape-inc.com so we can send you a copy immediately.
+ *
+ * @category   Buscape
+ * @package    Buscape_Ebit
+ * @copyright  Copyright (c) 2010 Buscapé Company (http://www.buscapecompany.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Buscape_Ebit>
+            <version>0.1.4</version>
+        </Buscape_Ebit>
+    </modules>
+    <global>
+        <models>
+            <ebit>
+                <class>Buscape_Ebit_Model</class>
+            </ebit>
+        </models>
+        <blocks>
+            <ebit>
+                <class>Buscape_Ebit_Block</class>
+            </ebit>
+        </blocks>
+        <helpers>
+            <ebit>
+                <class>Buscape_Ebit_Helper</class>
+            </ebit>
+        </helpers>
+    </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Buscape_Ebit>
+                    <files>
+                        <default>Buscape_Ebit.csv</default>
+                    </files>
+                </Buscape_Ebit>
+            </modules>
+        </translate>
+    </adminhtml>
+    <frontend>
+        <events>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <ebit_checkout_success>
+                        <class>ebit/observer</class>
+                        <method>setEbitSuccessPageView</method>
+                    </ebit_checkout_success>
+                </observers>
+            </checkout_onepage_controller_success_action>
+            <checkout_multishipping_controller_success_action>
+                <observers>
+                    <ebit_checkout_success>
+                        <class>ebit/observer</class>
+                        <method>setEbitSuccessPageView</method>
+                    </ebit_checkout_success>
+                </observers>
+            </checkout_multishipping_controller_success_action>
+        </events>
+        <layout>
+            <updates>
+                <ebit>
+                    <file>buscape_ebit.xml</file>
+                </ebit>
+            </updates>
+        </layout>
+    </frontend>
+</config>

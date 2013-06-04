@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa Payment Module for Bpag
+ *
+ * @title      Magento -> Custom Payment Module for Bpag
+ * @category   Payment Gateway
+ * @package    Indexa_Bpag
+ * @author     Indexa Team -> desenvolvimento [at] indexainternet [dot] com [dot] br
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2011 Indexa - http://www.indexainternet.com.br
+ */
+-->
+<config>
+    <modules>
+        <Indexa_Listcolor>
+            <active>true</active>
+            <codePool>local</codePool>
+			<depends>
+                <Mage_Catalog />
+            </depends>
+        </Indexa_Listcolor>
+    </modules>
+</config>

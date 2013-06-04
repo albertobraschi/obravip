@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa - Ebit. Adicionar Banner Clicável na tela de Success
+ *
+ * @title      Magento -> Indexa Ebit module
+ * @category   Custom checkout success
+ * @package    Indexa_Ebit
+ * @author     Indexa Development Team -> desenvolvimento [at] indexainternet [dot] com  [dot] br
+ * @copyright  Copyright (c) 2010 Indexa - http://www.indexainternet.com.br
+ */
+ -->
+<layout>
+    <checkout_onepage_success translate="label">
+        <label>One Page Checkout Success</label>
+        <reference name="content">
+            <block type="checkout/onepage_success" name="indexa_ebit.success" template="indexa_ebit/checkout/success.phtml"/>
+        </reference>
+    </checkout_onepage_success>
+</layout>

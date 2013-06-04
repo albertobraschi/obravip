@@ -1,0 +1,121 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="footer-container">
+    <div class="footer">
+		<div class="newsletter">
+			<?php echo $this->getChildHtml('footer.newsletter') //newsletter/subscribe.phtml ?>
+		</div>
+		<div class="infosSociais">
+			<div class="blocoQuemSomos">
+				<img src="<?php echo $this->getSkinUrl('images/logo-rodape.png') ?>" title="Obravip - Interiores Online" alt="Obravip - Interiores Online" />
+				<div>
+					<p>Para nós, produtos de design precisam ter preços justos. É por essa razão que somos uma loja virtual. Selecionamos os produtos mais desejados de design e temos a sua disposição consultoras que entendem de decoração de verdade.</p>
+					
+					<a href="<?php echo $this->getUrl('a-empresa') ?>">Leia Mais</a>
+				</div>
+			</div>
+			<div class="blocoFacebook">
+				<h3>Curta o Obravip no Facebook</h3>
+				<div class="btCurtir">
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+					<div class="fb-like" data-href="https://www.facebook.com/pages/Obravipcom-Interiores-online/336905451716" data-send="true" data-width="450" data-show-faces="false" data-colorscheme="light"></div>
+				</div>
+			</div>
+			<div class="blocoFormasPagamentos">
+				<h3>Formas de pagamento</h3>
+				<ul>
+					<li><img src="<?php echo $this->getSkinUrl('images/visa.png') ?>" title="Visa" alt="Visa" /></li>
+					<li><img src="<?php echo $this->getSkinUrl('images/master.png') ?>" title="Mastercard" alt="Mastercard" /></li>
+					<li><img src="<?php echo $this->getSkinUrl('images/dinners.png') ?>" title="Dinners Club" alt="Dinners Club" /></li>				
+					<li><img src="<?php echo $this->getSkinUrl('images/boleto.png') ?>" title="Boleto" alt="Boleto" /></li>
+				</ul>
+			</div>			
+		</div>
+		
+		<div class="blocosBottomRodape">
+			<div class="blocoLinks">
+				<h3>Sobre o Obravip</h3>
+				<ul>
+					<li><a href="<?php echo $this->getUrl('trocas-e-devolucoes') ?>">Trocas e Devoluções</a></li>
+					<li><a href="<?php echo $this->getUrl('pedidos-e-entregas') ?>">Pedidos e Entregas</a></li>
+					<li><a href="<?php echo $this->getUrl('perguntas-frequentes') ?>">Perguntas Frequentes</a></li>
+					<li><a href="<?php echo $this->getUrl('seja-nosso-fornecedor') ?>">Seja nosso Fornecedor</a></li>
+					<li><a href="<?php echo $this->getUrl('catalog/seo_sitemap/category') ?>">Mapa do Site</a></li>						
+				</ul>
+			</div>
+			
+			<div class="blocoAtendimentoCliente">
+				<h3><a href="<?php echo $this->getUrl('contacts') ?>">Atendimento ao cliente</a></h3>
+				<div class="duvidasTelefone">
+					<span class="duvidas">
+						<p>Em caso <br/><a href="<?php echo $this->getUrl('contacts') ?>">de dúvidas</a></p>
+					</span>
+					<span class="telefone">
+						<p>(11)<strong><a href="<?php echo $this->getUrl('contacts') ?>">4063-1226 </a> </strong><br /><span class="small"><a href="<?php echo $this->getUrl('contacts') ?>">Outros Telefones</a></span></p> 
+					</span>
+				</div>
+				<div class="televendas">
+					<p><a href="<?php echo $this->getUrl('contacts') ?>">Televendas Online</a></p>
+				</div>
+				<div class="linkContato">
+					<p><a href="<?php echo $this->getUrl('contacts') ?>">Entre em contato com o Obravip</a></p>
+				</div>
+			</div>
+			
+			<div class="blocoSegurancaAtendimento">
+				<h3>Segurança e certificações</h3>
+				<ul>
+					<li><a href="http://www.ebit.com.br/rateloja.asp?PnumNUmEmpresa=1507" target="_blank"><img src="<?php echo $this->getSkinUrl('images/ebit.png') ?> " title="Ebit"  alt="Ebit" /></a></li>
+					<li><a href="https://smarticon.geotrust.com/smarticonprofile?Referer=http://www.obravip.com" target="_blank"><img src="<?php echo $this->getSkinUrl('images/geotrust.jpg') ?>" title="Geotrust"  alt="Geotrust" /></li>
+					<li><img src="<?php echo $this->getSkinUrl('images/clearsale.jpg') ?>" title="Clearsale" alt="Clearsale" />  </li>
+				</ul>				
+			</div>				
+		</div>
+		
+        <?php //echo $this->getChildHtml() ?>
+        <p class="bugs"><?php echo $this->__('Help Us to Keep Magento Healthy') ?> - <a href="http://www.magentocommerce.com/bug-tracking" onclick="this.target='_blank'"><strong><?php echo $this->__('Report All Bugs') ?></strong></a> <?php echo $this->__('(ver. %s)', Mage::getVersion()) ?></p>
+        <p class="copyright"><?php echo $this->getCopyright() ?></p>
+		
+		<div class="dev">
+			<ul>
+				<li>
+					<a href="http://www.indexainternet.com.br" target="_blank"><img src="<?php echo $this->getSkinUrl('images/indexa-logo.png') ?>" title="Indexa Internet" alt="Indexa Internet" /></a>
+				</li>
+				<li>
+					<a href="http://www.vivapixel.com.br" target="_blank"><img src="<?php echo $this->getSkinUrl('images/vivapixel-logo.png') ?>" title="Viva Pixel - Desenvolvimento Web" alt="Viva Pixel - Desenvolvimento Web" /></a>
+				</li>
+			</ul>
+		</div>
+    </div>
+</div>

@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa - Gwap. 
+ *
+ * @title      Magento Indexa Gwap
+ * @category   Payment
+ * @package    Indexa_Gwap
+ * @author     Indexa Development Team <desenvolvimento@indexainternet.com.br>
+ * @copyright  Copyright (c) 2012 Indexa - http://www.indexainternet.com.br
+ */
+ -->
+<config>
+    <modules>
+        <Indexa_Gwap>
+            <version>0.1.0</version>
+        </Indexa_Gwap>
+    </modules>
+    <global>
+        <fieldsets>
+            <sales_convert_quote_payment>
+                <gwap_boleto_type>
+                    <to_order_payment>*</to_order_payment>
+                </gwap_boleto_type>
+            </sales_convert_quote_payment>
+        </fieldsets>
+        <models>
+            <gwap>
+                <class>Indexa_Gwap_Model</class>
+                <resourceModel>gwap_mysql4</resourceModel>
+            </gwap>
+            <gwap_mysql4>
+                <class>Indexa_Gwap_Model_Mysql4</class>
+                <entities>
+                    <order>
+                        <table>indexa_payment_orders</table>
+                    </order>
+                </entities>
+            </gwap_mysql4>
+        </models>
+        
+        <blocks>
+            <gwap>
+                <class>Indexa_Gwap_Block</class>
+            </gwap>
+        </blocks>
+        <helpers>
+            <gwap>
+                <class>Indexa_Gwap_Helper</class>
+            </gwap>
+        </helpers>
+        <resources>
+            <indexa_gwap_setup>
+                <setup>
+                    <module>Indexa_Gwap</module>                    
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </indexa_gwap_setup>
+        </resources>
+        <events>
+            <checkout_submit_all_after>
+                <observers>
+                    <gwap_sales_order_submit_all_after>
+                        <class>gwap/observer</class>
+                        <method>salesOrderSave</method>
+                    </gwap_sales_order_submit_all_after>
+                </observers>
+            </checkout_submit_all_after>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <indexa_gwap_add_boleto_link>
+                        <type>singleton</type>
+                        <class>gwap/observer</class>
+                        <method>addBoletoLink</method>
+                    </indexa_gwap_add_boleto_link>
+                </observers>
+            </checkout_onepage_controller_success_action>
+        </events>   
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <gwap>
+                    <file>indexa_gwap.xml</file>
+                </gwap>
+            </updates>
+        </layout>
+    </adminhtml>
+    <frontend>
+        <routers>
+            <gwap>
+                <use>standard</use>
+                <args>
+                    <module>Indexa_Gwap</module>
+                    <frontName>indexa_gwap</frontName>
+                </args>
+            </gwap>
+        </routers>
+        <translate>
+            <modules>
+                <Indexa_Gwap>
+                    <files>
+                        <default>Indexa_Gwap.csv</default>
+                    </files>
+                </Indexa_Gwap>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <indexa_gwap>
+                    <file>indexa_gwap.xml</file>
+                </indexa_gwap>
+            </updates>
+        </layout>
+    </frontend>    
+    <default>
+        <payment>
+            <gwap_auth>
+                <ambiente>CONNECTOR_TEST</ambiente>
+            </gwap_auth>
+            <gwap_cc>
+                <active>0</active>
+                <model>gwap/methods_cc</model>
+                <title>Cartão de Crédito</title>
+                <order_status>pending</order_status>
+                <campo_documento>taxvat,cpf,cnpj,customer_taxvat,customer_cpf,customer_cnpj</campo_documento>
+                <idioma>1</idioma>
+                <allowspecific>1</allowspecific>
+                <specificcountry>BR</specificcountry>
+                <sort_order>1</sort_order>
+                <!-- Indexa MC variables -->
+                <mc_active>1</mc_active>
+                <mc_type>cc</mc_type>                
+                <mc_tries>1</mc_tries>
+                <mc_log_error>1</mc_log_error>
+                <mc_fraud_check>1</mc_fraud_check>
+            </gwap_cc>
+            <gwap_boleto>
+                <active>1</active>
+                <model>gwap/methods_boleto</model>
+                <title>Boleto Bancário</title>
+                <order_status>pending</order_status>
+                <campo_documento>taxvat,cpf,cnpj,customer_taxvat,customer_cpf,customer_cnpj</campo_documento>
+                <idioma>1</idioma>
+                <allowspecific>1</allowspecific>
+                <specificcountry>BR</specificcountry>
+                <sort_order>90</sort_order>
+                <!-- Indexa MC variables -->
+                <mc_active>1</mc_active>                
+                <mc_type>boleto</mc_type>                
+                <mc_tries>0</mc_tries>
+                <mc_log_error>0</mc_log_error>
+                <mc_fraud_check>0</mc_fraud_check>
+            </gwap_boleto>
+        </payment>
+    </default>
+    <crontab>
+        <jobs>
+            <indexa_gwap_cancel_boleto>
+                <schedule>
+                    <cron_expr>0 6 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>gwap/observer::cancelBoleto</model>
+                </run>
+            </indexa_gwap_cancel_boleto>
+        </jobs>
+    </crontab>
+</config>
+     

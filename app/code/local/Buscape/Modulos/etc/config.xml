@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+ */
+-->
+<config>
+	<modules>
+		<Buscape_Modulos>
+			<version>0.1.0</version>
+		</Buscape_Modulos>
+	</modules>
+
+	<global>		
+		<helpers>
+			<modulos>
+				<class>Buscape_Modulos_Helper</class>
+			</modulos>
+		</helpers>		
+	</global>
+
+	<frontend>
+		<secure_url>
+			<modulos_standard>/modulos/standard</modulos_standard>
+		</secure_url>
+		<routers>
+			<modulos>
+				<use>standard</use>
+				<args>
+					<module>Buscape_Modulos</module>
+					<frontName>Buscape_Modulos</frontName>
+				</args>
+			</modulos>
+		</routers>
+		<translate>
+			<modules>
+				<modulos>
+					<files>
+						<default>Buscape_Modulos.csv</default>
+					</files>
+				</modulos>
+			</modules>
+		</translate>
+		<layout>
+			<updates>
+				<modulos>
+					<file>buscape_modulos.xml</file>
+				</modulos>
+			</updates>
+		</layout>
+	</frontend>
+
+	<adminhtml>
+		<translate>
+			<modules>
+				<modulos>
+					<files>
+						<default>Buscape_Modulos.csv</default>
+					</files>
+				</modulos>
+			</modules>
+		</translate>
+		
+	    <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <modulos translate="title" module="modulos">
+                                            <title>Módulos Buscapé</title>
+                                        </modulos>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        
+	</adminhtml>
+
+</config>

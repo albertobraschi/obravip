@@ -1,0 +1,10 @@
+<?php $product = Mage::registry('current_product'); ?>
+<?php $this->setValue($product->getFinalPrice()); ?>
+<div class="advancedinstallments-view">
+	<p class="advancedinstallments-title"><?php echo $this->__('Opções de parcelamento:'); ?></p>
+	<div class="advancedinstallments-parcelas-view">
+		<?php foreach($this->getInstallments() as $installment): ?>
+			<?php echo $installment->getValue().' x '. $installment->getInstallment() . ' ' . $installment->getMessage(); ?> <br />
+		<?php endforeach; ?>
+    </div>
+</div>

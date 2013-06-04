@@ -1,0 +1,198 @@
+/**
+* Interakting Slider
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@magentocommerce.com and you will be sent a copy immediately.
+*
+* @category   BusinessDecision
+* @package    BusinessDecision_Interaktingslider
+* @author     Business & Decision Picardie - contactmagento@interakting.com
+* @copyright  Copyright (c) 2009 Business & Decision (http://www.businessdecision.com)
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/  
+* {
+	outline: none !important;
+}
+#div-interaktingslider {
+	margin: 0 auto;
+	width: [[WIDTH]]px;
+	overflow: hidden;
+}
+#frame{
+	text-align: left;
+	width: [[WIDTH]]px;  
+	height: [[HEIGHT]]px;
+	position: relative;
+    /*background:url([[IMAGES_FOLDER]]/base_mini_head_bg.gif) repeat-x #fff;*/  
+}
+#frame div{	
+	position:absolute;	
+}
+#frame div div{
+
+}
+#top-left{
+	margin-top: 0px; 
+	margin-left: 0px; 
+	width: [[WIDTH]]px; 
+	height: [[HEIGHT]]px;
+	display: none;
+}
+#top-center {
+	margin:0px; 
+	width: [[WIDTH]]px; 
+	height: [[HEIGHT]]px;
+}
+#top-right{
+	margin-top: 0px; 
+	margin-left: 0px; 
+	width: [[WIDTH]]px; 
+	height: [[HEIGHT]]px;
+	display: none;
+}
+#middle-left{
+	margin-top: 0px; 
+	margin-left: 0px; 
+	width: [[WIDTH]]px; 
+	height: [[HEIGHT]]px;
+	display: none;
+}
+#middle-center{
+	margin-top: 0px; 
+	margin-left: 0px; 
+	width: [[WIDTH]]px; 
+	height: [[HEIGHT]]px;
+}
+#middle-right{
+	margin-top: 0px; 
+	margin-left: 0px; 
+	width: [[WIDTH]]px; 
+	height: [[HEIGHT]]px;
+	display: none;
+}
+#bottom-left{
+	margin-top: 0px; 
+	margin-left: 0px; 
+	width: [[WIDTH]]px; 
+	height: [[HEIGHT]]px;
+	display: none;
+}
+#bottom-center{
+	margin-top: 0px; 
+	margin-left: 0px; 
+	width: [[WIDTH]]px; 
+	height: [[HEIGHT]]px;
+	display: none;
+}
+#bottom-right{
+	margin-top: 0px; 
+	margin-left: 0px; 
+	width: [[WIDTH]]px; 
+	height: [[HEIGHT]]px;
+	display: none;
+}
+.slide{
+	position:absolute;	
+	text-align:left;
+	width: [[WIDTH]]px;
+	height: [[HEIGHT]]px;
+}
+.slide * {
+	margin:0;
+	padding:0;
+}
+.slide table {
+	margin: auto; 
+	padding: auto;
+}
+.slide a img { 
+	border: 0;
+}
+#slide-content{
+	width: [[WIDTH]]px;
+	height: [[HEIGHT]]px;
+	overflow: hidden;
+}
+#slide-commands {
+	width: 100%;
+	z-index: 5;
+}
+#slide-commands a {
+	display: inline-block;
+	text-decoration: none ;
+	/*margin: 2px;	*/
+	overflow: visible;
+    /*width: auto;*/
+    /*padding: 1px 8px;*/
+    color: #fff;
+    /*border: 1px solid #de5400;*/
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
+.button-numbers {
+	position: absolute !important;
+	bottom: -330px;
+	width: 100%;
+	display: table;
+	text-align: center;
+}
+.button-numbers a {
+	vertical-align: middle;
+	display: table-cell;
+	text-align: center !important;
+	background: url([[IMAGES_FOLDER]]/sprite-bts-slider-home.png) no-repeat left top;
+	display: block;
+	width: 15px;
+	height: 16px;
+	margin-right: 15px;
+}
+.button-numbers a span {
+	display: [[SHOWNUMBERS]];
+}
+.button-numbers a.active {
+	background-position: top right;
+}
+.nav-buttons {
+	width: 100%;
+}
+#frame:hover .nav-buttons a {
+	-moz-opacity: 1;
+	opacity: 1;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=100);
+}
+#prev {
+	position: absolute;
+	left: 0;
+	top: 145px;
+	background-position: left top;
+}
+#next {
+	position: absolute;
+	right: 0;
+	top: 145px;
+	background-position: right top;
+}
+.nav-buttons a {
+	background: url([[IMAGES_FOLDER]]/sprite-setas-slider.png) no-repeat;
+	display: block;
+	text-indent: -9999em;
+	width: 50px;
+	height: 50px;
+	-moz-opacity: 0.50;
+	opacity: 0.50;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=50);
+}
+.active {
+	background:#de5400;
+}
+.normal {
+	background:#f18200;
+}

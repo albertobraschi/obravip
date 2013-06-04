@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa - Gwap. 
+ *
+ * @title      Magento Indexa Fcontrol
+ * @category   Payment
+ * @package    Indexa_Fcontrol
+ * @author     Indexa Development Team <desenvolvimento@indexainternet.com.br>
+ * @copyright  Copyright (c) 2012 Indexa - http://www.indexainternet.com.br
+ */
+ -->
+<config>
+    <modules>
+        <Indexa_Fcontrol>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Payment />
+            </depends>
+        </Indexa_Fcontrol>
+    </modules>
+</config>

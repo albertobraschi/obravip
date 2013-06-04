@@ -1,0 +1,139 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+
+
+<div id="newsletters_show"><p><?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/newsletters.phtml')->toHtml(); ?></p></div>
+<a href="javascript:close()"><div id="newsletters_fundo" ></div></a>
+<script type="text/javascript">
+	
+	window.onload = function(){	
+		var name = "visited";		
+		var regex = new RegExp('(?:^|;)\\s?' + name + '=true(.*?)(?:;|$)');
+        	if (document.cookie.match(regex)){
+			return false;		
+  		}else{
+			var maskHeight = document.body.clientHeight;	
+			var maskWidth = document.body.clientWidth;
+			$('newsletters_fundo').setStyle({width:maskWidth+'px', height:maskHeight+'px'});
+			$('newsletters_fundo').setStyle({display:'block'});
+			var formMargin = ($('newsletters_show').getWidth())/2;
+			$('newsletters_show').setStyle({margin:'200px 0 0 '+ ((maskWidth/2)-formMargin) +'px' ,display:'block'});
+			document.cookie = "visited=" + true+";";		
+		}
+		
+	};
+	function close(){
+		$('newsletters_fundo').setStyle({display:'none'});
+		$('newsletters_show').setStyle({display:'none'});
+			
+	}
+	
+
+
+	
+</script>
+<div class="header-container">
+    <div class="header">
+        <?php if ($this->getIsHomePage()):?>
+        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        <?php else:?>
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>
+		
+		<div class="topHeader">
+			<div class="topHeaderLeft">		
+				<?php echo $this->getChildHtml('topSearch') ?>
+			</div>
+			<div class="topHeaderRight">		
+				<p class="welcome-msg">
+					<?php echo $this->getWelcome() ?>
+				</p>
+				
+				<p class="facaLogin">
+					<?php if( $this->helper('customer')->isLoggedIn() ): ?>
+						<a href="<?php echo Mage::getUrl('customer/account'); ?>" title="Minha Conta">Minha Conta</a> | 
+						<a href="<?php echo $this->helper('customer')->getLogoutUrl() ?>" title="Logout">Logout</a>
+					<?php else: ?>
+						Faça seu <a href="<?php echo $this->helper('customer')->getLoginUrl() ?>" title="Login">login</a> ou
+						<a href="<?php echo $this->helper('customer')->getRegisterUrl() ?>" title="Cadastre-se">cadastre-se</a>
+				<?php endif; ?>
+				</p>
+				
+				<div class="carrinhoTopo">
+					<?php echo $this->getChildHtml('mini.cart'); //checkout/cart/minicart.phtml ?>
+				</div>
+			</div>				
+		</div>
+		<div class="bottomHeader">
+			<div class="bottomHeaderLeft">	
+				<ul>
+					<li><a href="<?php echo $this->getUrl('arquitetos') ?>">Arquitetos</a></li>
+					<li><a href="<?php echo $this->getUrl('pessoa-juridica') ?>">Pessoa Jurídica</a></li>
+					<li><a href="http://www.obravipblogs.com.br/" target="_blank">Blog</a></li>
+				</ul>
+			</div>
+			
+			<!--<div class="topLinks">
+				<?php //echo $this->getChildHtml('topLinks') ?>
+			</div>-->
+			
+			<div class="bottomHeaderRight">		
+				<p class="televendas">Televendas (11) <span><a href="<?php echo $this->getUrl('contacts')?>">4063-1226</a><span></p>
+				<div class="sociaisTopo">
+					<ul>
+						<li><a class="twitter" href="http://twitter.com/obravip" target="_blank">Twitter</a></li>
+						<li><a class="facebook" href="https://www.facebook.com/pages/Obravipcom-Interiores-online/336905451716?ref=search&sid=1099201053.3149553483" target="_blank">Facebook</a></li>
+					</ul>
+				</div>
+			</div>				
+		</div>
+        <!--<div class="quick-access">            
+            <?php //echo $this->getChildHtml('topLinks') ?>
+            <?php //echo $this->getChildHtml('store_language') ?>
+        </div>-->
+        <?php echo $this->getChildHtml('topContainer'); ?>
+		<?php echo $this->getChildHtml('topMenu') ?>
+
+    </div>
+</div>
+<div class="infos-adicionais-header">
+	<ul>
+		<li class="entregas">Entregas em todo Brasil</li>
+		<li class="garantia">Garantia Total</li>
+		<li class="desconto-boleto">10% de desconto no boleto</li>
+		<li class="sem-juros">Em até 6x sem juros</li>
+		<li class="site-seguro">Site 100% seguro</li>
+	</ul>
+</div>
+<?php echo $this->getChildHtml('global_messages') ?>
+
+<?php //echo $this->getLayout()->createBlock('interaktingslider/interaktingslider')->toHtml() ?>
+

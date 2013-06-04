@@ -1,0 +1,24 @@
+<?php $_product = $this->getProduct(); ?>
+<?php $_colors = $this->getColors($_product); 
+?>
+	
+<?php if(count($_colors) > 0): ?>
+	<div class="selecionarCorListagem">
+		<p>Cores disponíveis:</p>
+		<ul class="filtro-cores">
+			<?php foreach ($_colors as $_productRow): ?>
+			<?php $_productItem = $this->transformRowToProduct($_productRow); ?>
+			<li>
+				<img src="<?php echo $this->getColorUrl($_productItem); ?>" 
+					title="<?php echo $this->getColorString($_productItem) ?>"
+					onerror="this.src='<?php echo $this->getNoImageColorUrl() ?>';"
+				width="20" height="20"
+				onclick="javascript:indexaColorsChangeProduct('<?php echo $_productItem->getId(); ?>', function(){hCarouselMedia = new UI.Carousel('horizontal_carousel');});"
+				class="indexa-colors-box indexa-colors"
+				style="cursor:pointer;"
+				/>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+<?php endif; ?>

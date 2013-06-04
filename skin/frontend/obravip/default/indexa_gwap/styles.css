@@ -1,0 +1,32 @@
+.payment-option-gwap_boleto{
+    height: 47px;
+    padding: 3px;
+    
+}
+
+.payment-option-gwap_boleto input{
+    display:none
+}
+.payment-option-gwap_boleto.selected{
+    background-color: #F0F0F0;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.payment-option-gwap_cc{
+    height: 47px;
+    padding: 3px;
+	
+    
+}
+.payment-option-gwap_cc input{
+    display: none;
+}
+.payment-option-gwap_cc.selected{
+    background-color: #F0F0F0;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}

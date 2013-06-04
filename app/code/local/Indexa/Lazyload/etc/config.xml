@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <frontend>
+        <layout>
+            <updates>
+                <Indexa_Lazyload>
+                    <file>indexa/lazyload.xml</file>
+                </Indexa_Lazyload>
+            </updates>
+        </layout>        
+    </frontend> 
+    <default>
+        <catalog>
+            <indexa_lazyload>
+                <active>1</active>
+                <include_jquery>1</include_jquery>
+            </indexa_lazyload>
+        </catalog>
+    </default>
+</config>

@@ -1,0 +1,6 @@
+<?php if ($this->isActive()): ?>
+    <div class="advancedinstallments-view">
+        <?php $installment = $this->getInstallmentHighest(); ?>
+        <?php printf('Em até %s', $this->__($installment->getValue().' x '. $installment->getInstallment() . ' ' . $installment->getMessage() )  ); ?>
+    </div>
+<?php endif; ?>

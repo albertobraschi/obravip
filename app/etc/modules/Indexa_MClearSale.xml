@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Indexa_MClearSale>
+            <active>true</active>
+            <codePool>local</codePool>
+            <self_name>Indexa ClearSale</self_name>
+            <!-- <priority>1140</priority> -->
+        </Indexa_MClearSale>
+    </modules>
+</config>

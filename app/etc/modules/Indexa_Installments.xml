@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa - Gwap. 
+ *
+ * @title      Magento Indexa Installments
+ * @category   Payment
+ * @package    Indexa_Mc
+ * @author     Indexa Development Team <desenvolvimento@indexainternet.com.br>
+ * @copyright  Copyright (c) 2012 Indexa - http://www.indexainternet.com.br
+ */
+ -->
+<config>
+    <modules>
+        <Indexa_Installments>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Indexa_Installments>
+    </modules>
+</config>

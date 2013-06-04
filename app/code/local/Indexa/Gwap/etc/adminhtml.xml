@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa - Gwap. 
+ *
+ * @title      Magento Indexa Gwap
+ * @category   Payment
+ * @package    Indexa_Gwap
+ * @author     Indexa Development Team <desenvolvimento@indexainternet.com.br>
+ * @copyright  Copyright (c) 2012 Indexa - http://www.indexainternet.com.br
+ */
+ -->
+<config>
+    <acl>
+	<resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <indexa>
+                                        <title>Indexa</title>
+                                    </indexa>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
+     

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa - Ebit. Adicionar Banner Clicável na tela de Success
+ *
+ * @title      Magento -> Indexa Ebit module
+ * @category   Custom checkout success
+ * @package    Indexa_Ebit
+ * @author     Indexa Development Team -> desenvolvimento [at] indexainternet [dot] com  [dot] br
+ * @copyright  Copyright (c) 2010 Indexa - http://www.indexainternet.com.br
+ */
+-->
+<config>
+   <sections>
+
+        <modulos translate="label" module="modulos">
+                			
+			<groups>
+               <ebit translate="label">
+                    <label>e-Bit</label>
+					<sort_order>0</sort_order>
+					<show_in_default>1</show_in_default>
+				  	<show_in_website>1</show_in_website>
+				  	<show_in_store>0</show_in_store>
+				  	
+                    <fields>
+                        <active translate="label">
+                            <label>Habilitado</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+						<codigo_loja translate="label">
+						    <label>Código da Loja</label>
+						    <frontend_type>text</frontend_type>
+						    <sort_order>67</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>0</show_in_store>
+						</codigo_loja>			
+                    </fields>
+                </ebit>
+            </groups>
+        </modulos>       
+    </sections>
+</config>

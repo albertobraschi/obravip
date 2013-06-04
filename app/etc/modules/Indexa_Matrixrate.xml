@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Indexa_Matrixrate>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Indexa_Matrixrate>
+	</modules>
+</config>
+

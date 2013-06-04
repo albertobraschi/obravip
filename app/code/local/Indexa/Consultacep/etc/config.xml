@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Catalog
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+-->
+<config>
+    <modules>
+        <Indexa_Consultacep>
+            <version>0.0.1</version>
+        </Indexa_Consultacep>
+    </modules>
+    <global>
+        <models>
+            <indexa_consultacep>
+                <class>Indexa_Consultacep_Model</class>
+                <resourceModel>indexa_consultacep_mysql4</resourceModel>
+            </indexa_consultacep>
+            <indexa_consultacep_mysql4>
+                <class>Indexa_Consultacep_Model_Mysql4</class>
+                <entities>
+                    <consultacep>
+                        <table>indexa_cep</table>
+                    </consultacep>
+                </entities>
+            </indexa_consultacep_mysql4>
+        </models>
+        <!-- <helpers>
+            <indexa_consultacep>
+                <class>Indexa_Consultacep_Helper</class>
+            </indexa_consultacep>
+			<consultacep>
+                <rewrite>
+                    <data>Indexa_Consultacep_Helper_Data</data>               
+                </rewrite>
+            </consultacep>
+        </helpers>-->
+		<blocks>
+            <indexa_consultacep>
+                <class>Indexa_Consultacep_Block</class>
+            </indexa_consultacep>
+			<consultacep>
+				<rewrite>
+					<mapa>Indexa_Consultacep_Block_Mapa</mapa>
+					<result>Indexa_Consultacep_Block_Result</result>
+				</rewrite>
+			</consultacep>
+		</blocks>
+        <resources>
+            <indexa_consultacep_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </indexa_consultacep_read>
+        </resources>
+	</global>
+	<frontend>
+		<routers>
+			<mapa>
+				<use>standard</use>
+				<args>
+					<module>Indexa_Consultacep</module>
+					<frontName>mapa</frontName>
+				</args>
+			</mapa>
+		</routers>
+		<layout>
+			<updates>
+				<consultacep>
+					<file>indexa_consultacep.xml</file>
+				</consultacep>
+			</updates>
+		</layout>
+	</frontend>
+</config>

@@ -1,0 +1,21 @@
+<?php $_product = $this->getProduct(); ?>
+<?php $_colors = $this->getColors($_product); ?>
+
+<?php if (count($_colors) > 0): ?>
+	<div class="selecionarCorListagem">
+		<ul>
+			<?php foreach ($_colors as $_productRow): ?>
+			<?php $_productItem = $this->transformRowToProduct($_productRow); ?>
+			<li>
+				<a href="#" <?php /* ?> href="<?php echo $_productItem->getProductUrl(); ?>" <?php */ ?>
+					onclick="javascript:indexaColorsChangeProduct('<?php echo $_productItem->getId(); ?>')">
+					<img src="<?php echo $this->getColorUrl($_productItem); ?>" 
+						title="<?php echo $this->getColorString($_productItem) ?>"
+						onerror="this.src = '<?php echo $this->getNoImageColorUrl (); ?>'"
+					width="10" height="11" />
+				</a>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+<?php endif; ?>

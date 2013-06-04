@@ -1,0 +1,99 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+
+<?php if (count($this->getGalleryImages()) == 0): ?> 
+<div class="product-image">
+    <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(538,428).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" width="538" height="428" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</div>
+<?php else: ?>
+<div class="product-image">
+	<div id="horizontal_carousel">
+		<div class="previous_button">Anterior</div>  
+		<div class="next_button">Próximo</div>
+		<div class="container">
+		    <ul>
+		    <?php foreach ($this->getGalleryImages() as $_image): ?>
+		        <li>
+		        	<?php /* 
+		            <a href="#" onclick="popWin('<?php echo $this->getGalleryUrl($_image) ?>', 'gallery', 'width=300,height=300,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>">
+		            </a>
+		        	*/ ?>
+	            	<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize(538,428); ?>"  alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+		        </li>
+		    <?php endforeach; ?>
+		    </ul>
+		</div>
+	</div>
+</div>
+
+<?php $i = 0; ?>
+<div class="more-views">
+	<div id="horizontal_carousel_produto">
+	<h3 class="blockTitles">Imagens do Produto</h3>
+	<?php if(count($this->getGalleryImages()) > 3):?>
+	<div class="previous_button">Anterior</div>  
+	<div class="next_button">Próximo</div>
+	<?php endif;?>
+	<div class="container">
+    <ul>
+    <?php foreach ($this->getGalleryImages() as $_image): ?>
+        <li onclick="hCarouselMedia.scrollTo(<?php echo $i++ ?>);">
+			<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize(138,108); ?>"  alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+        </li>
+    <?php endforeach; ?>
+    </ul>
+	<div class="passeMouse"></div>
+	</div>
+	</div>
+</div>
+<script type="text/javascript">
+Event.observe(window, 'load', function(){
+	hCarousel = new UI.Carousel('horizontal_carousel_produto', {scrollInc:3});
+	
+});
+</script>
+
+<script type="text/javascript">
+	Event.observe(window, 'load', function(){
+			hCarouselMedia = new UI.Carousel('horizontal_carousel');
+	
+	});
+</script>
+<?php endif; ?>

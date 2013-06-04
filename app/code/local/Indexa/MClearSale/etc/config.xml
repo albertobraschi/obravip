@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Indexa_MClearSale>
+            <version>0.1.0</version>
+        </Indexa_MClearSale>
+    </modules>
+    
+    
+    
+    
+    <frontend>
+        <translate>
+            <modules>
+                <Indexa_MClearSale>
+                    <files>
+                        <default>Indexa_MClearSale.csv</default>
+                    </files>
+                </Indexa_MClearSale>
+            </modules>
+        </translate>
+    </frontend>
+    
+    
+    
+    
+    <admin>
+        <routers>
+            <mclearsale>
+                <use>admin</use>
+                <args>
+                    <module>Indexa_MClearSale</module>
+                    <frontName>mclearsale</frontName>
+                </args>
+            </mclearsale>
+        </routers>
+    </admin>
+    
+    
+    
+    
+    <adminhtml>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<mclearsale translate="title" module="customer">
+											<title>Indexa MClearSale by http://www.indexainternet.com.br</title>
+											<sort_order>50</sort_order>
+										</mclearsale>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+        <translate>
+            <modules>
+                <Indexa_MClearSale>
+                    <files>
+                        <default>Indexa_MClearSale.csv</default>
+                    </files>
+                </Indexa_MClearSale>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <mclearsale>
+                    <file>indexamclearsale.xml</file>
+                </mclearsale>
+            </updates>
+        </layout>
+    </adminhtml>
+    
+    
+    
+    
+    
+    <global>
+        <models>
+            <mclearsale>
+                <class>Indexa_MClearSale_Model</class>
+            </mclearsale>
+        </models>
+		<resources>
+		     <mclearsale_setup>
+		        <setup>
+		           <module>Indexa_MClearSale</module>
+		        </setup>
+		        <connection>
+		           <use>core_setup</use>
+		        </connection>
+		     </mclearsale_setup>
+		     <mclearsale_write>
+		        <connection><use>core_write</use></connection>
+		     </mclearsale_write>
+		     <mclearsale_read>
+		        <connection><use>core_read</use></connection>
+		     </mclearsale_read>
+		  </resources>
+        <blocks>
+            <mclearsale>
+                <class>Indexa_MClearSale_Block</class>
+            </mclearsale>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_view_tab_info>Indexa_MClearSale_Block_Rewrite_AdminSalesOrderViewTabInfo</sales_order_view_tab_info>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <helpers>
+            <mclearsale>
+                <class>Indexa_MClearSale_Helper</class>
+            </mclearsale>
+        </helpers>
+    </global>
+    
+    
+    
+    
+    
+    
+</config>

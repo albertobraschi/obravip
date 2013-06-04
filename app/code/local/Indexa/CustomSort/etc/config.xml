@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<config>
+	<modules>
+		<Indexa_CustomSor>
+			<version>0.1.0</version>
+		</Indexa_CustomSor>
+	</modules>
+	<global>
+		<blocks>
+			<catalog>
+				<rewrite>
+					<product_list_toolbar>Indexa_CustomSort_Block_Product_List_Toolbar</product_list_toolbar>
+				</rewrite>
+			</catalog>
+		</blocks>
+		<models>
+            <catalog>
+                <rewrite>
+                    <config>Indexa_CustomSort_Model_Catalog_Config</config>
+                </rewrite>
+            </catalog>
+        </models>
+	</global>
+</config>

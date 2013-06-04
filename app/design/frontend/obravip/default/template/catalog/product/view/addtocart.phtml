@@ -1,0 +1,88 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php /* if(!$_product->isGrouped()): ?>
+        <label for="qty"><?php echo $this->__('Qty:') ?></label>
+        <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+        <?php endif; */ ?>
+        <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this); return false;">Comprar</button>
+        <?php echo $this->getChildHtml('', true, true) ?>
+    </div>
+<?php else:
+
+		$encodedUrl = base64_encode(Mage::getBaseUrl());
+		$prod_id = $_product->getId();
+
+		$url_aviseme = Mage::getBaseUrl() . 'productalert/add/stock/product_id/' . $prod_id . '/uenc/' . $encodedUrl . '/';
+?>
+<script type="text/javascript">
+function aviseme()
+{
+  document.getElementById('btn_aviseme').value='aguarde...';
+  document.getElementById('btn_aviseme').disabled=true;
+<?php
+	if ( $this->helper('customer')->isLoggedIn() ) {
+?>
+  new Ajax.Request('<?php echo $url_aviseme; ?>', {
+  method: 'get',
+  onSuccess: successFunc,
+  onFailure:  failureFunc
+  });
+<?php
+	} else {
+?>
+	alert("Você deve estar logado para poder se inscrever neste alerta.");
+	document.getElementById('btn_aviseme').style.display = 'none';
+	//document.location.href = '<?php echo $url_aviseme; ?>';
+<?php
+	}
+?>
+}
+
+function successFunc(response){
+   
+     if (200 == response.status){
+		document.location.href='<?php echo $_product->getProductUrl();?>?aviseme=1';
+	}
+}
+
+function failureFunc(response){
+     alert("Houve uma falha, por favor, tente novamente." );
+}
+</script
+<label id="noSale">
+<?php
+	$get_data = Mage::app()->getRequest()->getParam('aviseme');
+	if ( $get_data != 1) {
+?>
+	<input type="button" id="btn_aviseme" style="background-color:#6b645e;color:#fff;padding:10px 15px;" onclick="aviseme();" title="Clique para ser avisado quando este produto estiver disponível." value="AVISE-ME QUANDO CHEGAR" />
+<?php } ?>
+</label>
+<?php endif; ?>

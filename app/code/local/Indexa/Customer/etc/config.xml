@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Indexa - Customer. Adicionar campos ao checkout.
+ *
+ * @title      Magento -> Indexa Customer module
+ * @category   Custom customer fields
+ * @package    Indexa_Customer
+ * @author     Indexa Development Team -> desenvolvimento [at] indexainternet [dot] com  [dot] br
+ * @copyright  Copyright (c) 2011 Indexa - http://www.indexainternet.com.br
+ */
+ -->
+<config>
+    <modules>
+        <Indexa_Customer>
+            <version>0.1.6</version>
+        </Indexa_Customer>
+    </modules>
+    
+    <frontend>
+        <layout>
+            <updates>
+                <!-- Nome ficticio. O correto seria "customer", mas nao queremos sobrescrever e sim adicionar -->
+                <indexa_customer>
+                    <file>indexa_customer.xml</file>
+                </indexa_customer>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Indexa_Customer>
+                    <files>
+                        <default>Indexa_Customer.csv</default>
+                    </files>
+                </Indexa_Customer>
+            </modules>
+        </translate>
+    </frontend>
+    
+    <adminhtml>
+        <layout>
+            <updates>
+                <indexa_customer>
+                    <file>indexa_customer.xml</file>
+                </indexa_customer>
+            </updates>
+        </layout>
+    </adminhtml>
+    
+    <global>
+        <models>
+              <customer>
+                  <rewrite>
+						<entity_setup>Indexa_Customer_Model_Entity_Setup</entity_setup>
+						<customer>Indexa_Customer_Model_Customer</customer>
+                  </rewrite>
+              </customer>
+              <checkout>
+                  <rewrite>
+						<type_onepage>Indexa_Customer_Model_Type_Onepage</type_onepage>
+                  </rewrite>
+              </checkout>
+         </models>
+         
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <customer_edit_tab_account>Indexa_Customer_Block_Rewrite_AdminEditTabAccount</customer_edit_tab_account>
+                    <sales_order_create_form_account>Indexa_Customer_Block_Rewrite_SalesOrderCreateFormAccount</sales_order_create_form_account>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <helpers>
+            <indexa_customer>
+                <class>Indexa_Customer_Helper</class>
+            </indexa_customer>
+        </helpers>
+        
+        <resources>
+            <indexa_customer_setup>
+                <setup>
+                    <module>Indexa_Customer</module>
+                    <class>Indexa_Customer_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </indexa_customer_setup>
+            <indexa_customer_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </indexa_customer_write>
+            <indexa_customer_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </indexa_customer_read>
+        </resources>
+        
+        <fieldsets>
+            <sales_copy_order>
+                <customer_cnpj><to_edit>*</to_edit></customer_cnpj>
+                <customer_faturar_contra><to_edit>*</to_edit></customer_faturar_contra>
+                <customer_razao_social><to_edit>*</to_edit></customer_razao_social>
+                <customer_ie><to_edit>*</to_edit></customer_ie>
+            </sales_copy_order>
+           <sales_convert_quote>
+                <customer_cnpj><to_order>*</to_order></customer_cnpj>
+                <customer_faturar_contra><to_order>*</to_order></customer_faturar_contra>
+                <customer_razao_social><to_order>*</to_order></customer_razao_social>
+                <customer_ie><to_order>*</to_order></customer_ie>
+           </sales_convert_quote>
+            <sales_convert_order>
+                <customer_cnpj><to_quote>*</to_quote></customer_cnpj>
+                <customer_faturar_contra><to_quote>*</to_quote></customer_faturar_contra>
+                <customer_razao_social><to_quote>*</to_quote></customer_razao_social>
+                <customer_ie><to_quote>*</to_quote></customer_ie>
+            </sales_convert_order>
+           <customer_account>
+              <cnpj><create>0</create><update>0</update><name>0</name></cnpj>
+              <faturar_contra><create>1</create><update>1</update><name>1</name></faturar_contra>
+              <razao_social><create>0</create><update>0</update><name>0</name></razao_social>
+              <ie><create>0</create><update>0</update><name>0</name></ie>
+           </customer_account>
+            <checkout_onepage_billing>
+              <customer_cnpj><to_customer>cnpj</to_customer></customer_cnpj>
+              <customer_faturar_contra><to_customer>faturar_contra</to_customer></customer_faturar_contra>
+              <customer_razao_social><to_customer>razao_social</to_customer></customer_razao_social>
+              <customer_ie><to_customer>ie</to_customer></customer_ie>
+            </checkout_onepage_billing>
+			
+			<checkout_onepage_quote>
+              <customer_cnpj><to_customer>cnpj</to_customer></customer_cnpj>
+              <customer_faturar_contra><to_customer>faturar_contra</to_customer></customer_faturar_contra>
+              <customer_razao_social><to_customer>razao_social</to_customer></customer_razao_social>
+              <customer_ie><to_customer>ie</to_customer></customer_ie>
+			</checkout_onepage_quote>
+			<customer_account>
+              <cnpj><to_quote>customer_cnpj</to_quote></cnpj>
+              <faturar_contra><to_quote>customer_faturar_contra</to_quote></faturar_contra>
+              <razao_social><to_quote>customer_razao_social</to_quote></razao_social>
+              <ie><to_quote>customer_ie</to_quote></ie>
+			</customer_account>			
+        </fieldsets>
+    </global>
+    
+</config>

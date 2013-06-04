@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<config>
+	<modules>
+		<Indexa_CustomAttr>
+			<version>0.1.0</version>
+		</Indexa_CustomAttr>
+	</modules>
+	<global>
+		<models>
+			<indexa_customattr>
+				<class>Indexa_CustomAttr_Model</class>
+			</indexa_customattr>
+		</models>
+		<resources>
+			<indexa_customattr_setup>
+				<setup>
+					<module>Indexa_CustomAttr</module>
+					<class>Mage_Customer_Model_Entity_Setup</class>
+				</setup>
+			</indexa_customattr_setup>
+		</resources>
+	</global>
+	<frontend>
+		<events>
+			<customer_save_before>
+				<observers>
+					<indexa_customattr>
+						<type>singleton</type>
+						<class>indexa_customattr/observer</class>
+						<method>customerSaveBefore</method>
+					</indexa_customattr>
+				</observers>
+			</customer_save_before>
+		</events>
+	</frontend>
+</config>

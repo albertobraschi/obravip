@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa - Customer. Adcionar facilmente campos ao checkout.
+ *
+ * @title      Magento -> Indexa Customer module
+ * @category   Custom customer fields
+ * @package    Indexa_Customer
+ * @author     Indexa Development Team -> desenvolvimento [at] indexainternet [dot] com  [dot] br
+ * @copyright  Copyright (c) 2009 Indexa - http://www.indexainternet.com.br
+ */
+ -->
+<config>
+    <modules>
+        <Indexa_Customer>
+            <active>true</active>
+            <codePool>local</codePool>
+            <version>0.1.6</version>
+        </Indexa_Customer>
+    </modules>
+</config>

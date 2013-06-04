@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa - Customer. Adicionar campos ao checkout.
+ *
+ * @title      Magento -> Indexa Customer module
+ * @category   Custom customer fields
+ * @package    Indexa_Customer
+ * @author     Indexa Development Team -> desenvolvimento [at] indexainternet [dot] com  [dot] br
+ * @copyright  Copyright (c) 2011 Indexa - http://www.indexainternet.com.br
+ */
+ -->
+<layout>
+    <customer_account_create>
+    
+	   <reference name="head">	   
+	       <action method="addJs"><script>indexa_customer/validator.js</script></action>
+	       <action method="addJs"><script>indexa_customer/masks.js</script></action>
+	   </reference>
+	
+         <reference name="content">
+        	<remove name="customer_form_register"/>
+            <block type="customer/form_register" name="indexa_customer_form_register" template="indexa_customer/customer/form/register.phtml"/>
+        </reference>
+    </customer_account_create>
+    
+    <customer_account_edit>
+    
+	   <reference name="head">
+	       <action method="addJs"><script>indexa_customer/validator.js</script></action>
+	       <action method="addJs"><script>indexa_customer/masks.js</script></action>
+	   </reference>
+	
+        <reference name="content">
+            <remove name="customer_edit"/>
+            <block type="customer/form_edit" name="indexa_customer_edit" template="indexa_customer/customer/form/edit.phtml"/>
+        </reference>
+    </customer_account_edit>
+    
+    <checkout_onepage_index>     
+	   <reference name="head">
+	       <action method="addJs"><script>indexa_customer/validator.js</script></action>
+	       <action method="addJs"><script>indexa_customer/masks.js</script></action>
+	   </reference>
+	 
+        <reference name="content">
+        	<reference name="checkout.onepage">
+        	    <remove name="checkout.onepage.billing"/>
+            	<block type="checkout/onepage_billing" name="indexa.checkout.onepage.billing" as="billing" template="indexa_customer/checkout/onepage/billing.phtml"/>
+        	</reference>
+        </reference>
+    </checkout_onepage_index>
+    
+    <sales_order_view translate="label">
+        <reference name="my.account.wrapper">
+        	<remove name="sales.order.info"/>
+            <block type="sales/order_info" as="info" name="indexa.sales.order.info" template="indexa_customer/sales/order/info.phtml" before="sales.order.view" />
+        </reference>
+    </sales_order_view>
+    
+</layout>

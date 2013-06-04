@@ -1,0 +1,15 @@
+<?php $ebit = Mage::getStoreConfig('modulos/ebit/active'); ?>
+<?php if( $ebit ): ?>
+<?php $cod_loja = Mage::getStoreConfig('modulos/ebit/codigo_loja'); ?>
+
+<div class="ebit">
+<br />
+<center>
+	<form name="formebit" method="get" target="_blank" action="https://www.ebitempresa.com.br/bitrate/pesquisa1.asp">
+    	<input type=hidden name='empresa' value='<?php echo $cod_loja; ?>' />
+        <input type="image" border="0" name="banner" src="https://www.ebitempresa.com.br/bitrate/banners/b<?php echo $cod_loja; ?>.gif" alt="O que voc&ecirc; achou desta loja?" width="468" height="60" />
+    </form>
+</center>
+<br /><br />
+</div>
+<?php endif; ?>

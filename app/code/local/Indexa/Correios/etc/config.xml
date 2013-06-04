@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa Correios Brasileiros
+ *
+ * @title      Indexa -> Custom Shipping Extension for Correios Brasileiros
+ * @category   Shipping Method
+ * @package    Indexa_Correios
+ * @author     Gabriel Zamprogna -> desenvolvimento [at] indexainternet [dot] com  [dot] br
+ * @copyright  Copyright (c) 2010 Indexa
+ */
+-->
+<config>
+    <modules>
+        <Indexa_Correios>
+            <version>0.1.0</version>
+            <depends>
+                <Mage_Shipping />
+            </depends>
+        </Indexa_Correios>
+    </modules>
+    <global>
+        <resources>
+            <correios_setup>
+                <setup>
+                    <module>Indexa_Correios</module>
+                </setup>
+                <connection>
+                    <use>directory_setup</use>
+                </connection>
+            </correios_setup>
+            <correios_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </correios_read>
+            <correios_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </correios_write>
+        </resources>
+        <sales>
+            <shipping>
+                <carriers>
+                    <indexacorreios>
+                        <class>Indexa_Correios_Model_Carrier_Indexacorreios</class>
+                    </indexacorreios>
+                </carriers>
+            </shipping>
+        </sales>
+    </global>
+
+    <default>
+        <carriers>
+            <indexacorreios>
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
+                <model>Indexa_Correios_model_carrier_indexacorreios</model>
+                <name>Correios Brasileiros</name>
+                <title>Correios Brasileiros</title>
+                <min_order_value>0</min_order_value>
+                <max_order_value>99999</max_order_value>
+                <weight_units>1</weight_units>
+                <maxweight>30</maxweight>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>BR</specificcountry>
+                <postmethods>41106,40010</postmethods>
+                <postmethodsc>0</postmethodsc>
+                <handling_fee>0.0</handling_fee>
+                <maopropria_fee>0</maopropria_fee>
+                <ar_fee>0</ar_fee>
+                <valordeclarado_fee>0</valordeclarado_fee>
+                <specificerrmsg><![CDATA[Houve uma falha moment&acirc;nea ao obter os custos de envio. Por favor, tente novamente.]]></specificerrmsg>
+                <showmethod>1</showmethod>
+            </indexacorreios>
+        </carriers>
+    </default>
+</config>

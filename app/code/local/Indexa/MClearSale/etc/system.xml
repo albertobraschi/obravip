@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<mclearsale translate="label" module="mclearsale">
+			<label>Indexa Internet</label>
+			<sort_order>301</sort_order>
+		</mclearsale>
+	</tabs>
+   <sections>
+        <mclearsale translate="label" module="mclearsale">
+        	<label>Indexa MClearSale</label>
+			<tab>mclearsale</tab>
+			<sort_order>130</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+            <groups>
+			    <indexa_general translate="label">
+					<label>Código de serviço de Comércio Eletrônico junto à Locaweb</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>3</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<codigo_painel translate="label comment">
+							<label>Código de Identificação</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Este código pode ser visto no topo do seu Painel de Controle Locaweb - Para mais informações, visite: <a href="http://www.indexainternet.com.br" target="_blank">http://www.indexainternet.com.br</a>.]]></comment>
+							<default>3</default>
+						</codigo_painel>
+					</fields>
+				</indexa_general>
+			</groups>
+		</mclearsale>
+	</sections>
+</config>

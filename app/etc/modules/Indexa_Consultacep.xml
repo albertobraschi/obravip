@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa - Consulta Cep. 
+ *
+ * @title      Magento Indexa Consultacep
+ * @category   General
+ * @package    Indexa_Consultacep
+ * @author     Indexa Development Team <desenvolvimento@indexainternet.com.br>
+ * @copyright  Copyright (c) 2011 Indexa - http://www.indexainternet.com.br
+ */
+ -->
+<config>
+    <modules>
+        <Indexa_Consultacep>
+            <active>true</active>
+            <codePool>local</codePool>            
+        </Indexa_Consultacep>
+    </modules>
+</config>
