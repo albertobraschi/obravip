@@ -1235,6 +1235,7 @@ textarea { overflow: auto; vertical-align: top; resize: vertical; }
 #nav .wrpSubMenuWithImg .contentListSubMenu { 
 	float: left;
 	width: 202px;
+	vertical-align:top;
 }
 #nav .wrpSubMenu .contentListSubMenu h3,
 #nav .wrpSubMenuWithImg .contentListSubMenu h3 { 
@@ -4270,3 +4271,15 @@ footer:after,
 }
 
 .lazy-loaded { opacity: 1; }
+
+.contentListSubMenu ul {
+	display:inline-block;
+	vertical-align:top;
+	width: 190px;
+}
+.contentListSubMenu ul.lastSubmenuBlock{
+	margin-left: 20px;
+}
+.contentListSubMenuColumn2{
+	width: 404px !important;
+}

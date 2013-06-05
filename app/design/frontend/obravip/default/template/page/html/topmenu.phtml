@@ -33,57 +33,65 @@
 ?>
 
 <?php //$cat_ids = explode(',', Mage::getModel('catalog/category')->load(2)->getChildren()); ?>
-<?php $categories = Mage::getModel('catalog/category')->load(2)->getChildrenCategories(); ?>
+<?php $categories = Mage::getModel('catalog/category')->load(2)->getChildrenCategories() ?>
 
 <div class="nav-container">
 	<ul id="nav">
 	<?php foreach($categories as $category): ?>
 		<?php //$category = Mage::getModel('catalog/category')->load($cat_id);  ?>
 		<li class="level0">
-			<a class="level-top" href="<?php echo $category->getUrl() ?>"><span><?php echo $category->getName(); ?></span></a>
-			
-			<div class="<?php echo $category->getThumbnail() ? 'wrpSubMenuWithImg' : 'wrpSubMenu' ?>">
-				<div class="contentListSubMenu">
-					<h3 class="title"><?php echo $category->getName(); ?></h3>
-					<?php $subcategoriesToName = $category->getChildrenCategories(); 
+			<a class="level-top" href="<?php echo $category->getUrl() ?>"><span><?php echo $category->getName() ?></span></a>
+			<?php $subcategories = $category->getChildrenCategories() ?>
+			<?php if (count($subcategories)): ?>
+				<div class="<?php echo $category->getThumbnail() ? 'wrpSubMenuWithImg' : 'wrpSubMenu' ?>">
+				<?php $subcategoriesToName = $category->getChildrenCategories();
 					//atribuir as categorias a um array para ordenação dos nomes     
-					$NameSubCategories = array();
-					foreach($subcategoriesToName as $subcategoryToName){
+					$NameSubCategories = $items = array();
+					
+					$column = (count($subcategories) > 5)? 2 : 1;
+					$curentItem = $curentColumn = 1;
+					$limit = round(count($subcategories)/$column);
+					
+					foreach($subcategoriesToName as $subcategoryToName)
+					{
 						$NameSubCategories[] = ($subcategoryToName->getName());
 					}
-					asort($NameSubCategories);//ordena em ordem alfabetica as subcategorias
+					asort($NameSubCategories);
+					//ordena em ordem alfabetica as subcategorias
+					foreach($NameSubCategories as $NameSubCategory)
+					{
+						foreach($subcategories as $subcategory)
+						{
+							if(strcasecmp($NameSubCategory, $subcategory->getName()) == 0)
+							{
+								$items[$curentColumn][] = $subcategory;
+								if ($curentItem < $limit) $curentItem++;
+								else {
+									$curentItem = 1;
+									$curentColumn++;
+								}
+							}
+						}
+					} 
 					?>
-					<?php $subcategories = $category->getChildrenCategories(); ?>
-					<?php if ( count($subcategories) ) : ?>
-						<ul class="level0">
-						<?php $i = 0; ?>
-						<?php foreach($NameSubCategories as $NameSubCategory){?>
-						<?php foreach($subcategories as $subcategory): 
-							if (strcasecmp($NameSubCategory,$subcategory->getName())== 0):?>
-							<?php if($i++ == 4): ?>
-								<li class="level1">
-								  <a href="<?php echo $category->getUrl() ?>"><span>Exibir demais categorias</span></a>
-								</li>
-								<div style="display: none;">
-							<?php endif; ?>
-							
-							<li class="level1">
-								<a href="<?php echo $subcategory->getUrl() ?>"><span><?php echo $subcategory->getName() ?></span></a>
-							</li>
-						<?php endif; endforeach;} ?>
-							
-						<?php if( count($subcategories) > 5): ?>
-							</div>
-						<?php endif; ?>
-						</ul>
-					<?php endif; ?>
+					<div class="contentListSubMenu contentListSubMenuColumn<?php echo count($items) ?>">
+						<h3 class="title"><?php echo $category->getName() ?></h3>
+						<?php foreach($items as $column => $_subcategories): ?>
+							<?php $last = ($column == count($items)) ? ' lastSubmenuBlock' : '' ?>
+							<ul class="level0<?php echo $last ?>">
+								<?php foreach($_subcategories as $_subcategory): ?>
+									<li class="level1"><a href="<?php echo $_subcategory->getUrl() ?>"><span><?php echo $_subcategory->getName() ?></span></a></li>
+								<?php endforeach ?>
+							</ul>
+						<?php endforeach ?>
+					</div>	
+					<?php if($category->getThumbnail()): ?>
+						<div class="thumbCatMenu">
+							<img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$category->getThumbnail() ?>" title="<?php echo $category->getName() ?>" />
+						</div>
+					<?php endif ?>
 				</div>
-				<?php if($category->getThumbnail()): ?>
-				<div class="thumbCatMenu">
-					<img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$category->getThumbnail(); ?>" title="<?php echo $category->getName(); ?>" />
-				</div>
-			<?php endif; ?>
-			</div>
+			<?php endif ?>
 		</li>
 	<?php endforeach; ?>
 	</ul>
