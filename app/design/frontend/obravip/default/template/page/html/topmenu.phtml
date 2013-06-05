@@ -32,7 +32,6 @@
  */
 ?>
 
-<?php //$cat_ids = explode(',', Mage::getModel('catalog/category')->load(2)->getChildren()); ?>
 <?php $categories = Mage::getModel('catalog/category')->load(2)->getChildrenCategories() ?>
 
 <div class="nav-container">
@@ -57,6 +56,7 @@
 						$NameSubCategories[] = ($subcategoryToName->getName());
 					}
 					asort($NameSubCategories);
+
 					//ordena em ordem alfabetica as subcategorias
 					foreach($NameSubCategories as $NameSubCategory)
 					{
