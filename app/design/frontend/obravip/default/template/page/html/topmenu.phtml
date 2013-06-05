@@ -48,9 +48,9 @@
 					//atribuir as categorias a um array para ordenação dos nomes     
 					$NameSubCategories = $items = array();
 					
-					$column = (count($subcategories) > 5)? 2 : 1;
+					$limit = 10;
+					$column = (count($subcategories) > $limit)? round(count($subcategories)/$limit) : 1;
 					$curentItem = $curentColumn = 1;
-					$limit = round(count($subcategories)/$column);
 					
 					foreach($subcategoriesToName as $subcategoryToName)
 					{
@@ -77,7 +77,7 @@
 					<div class="contentListSubMenu contentListSubMenuColumn<?php echo count($items) ?>">
 						<h3 class="title"><?php echo $category->getName() ?></h3>
 						<?php foreach($items as $column => $_subcategories): ?>
-							<?php $last = ($column == count($items)) ? ' lastSubmenuBlock' : '' ?>
+							<?php $last = ($column == 1) ? ' firstSubmenuBlock' : '' ?>
 							<ul class="level0<?php echo $last ?>">
 								<?php foreach($_subcategories as $_subcategory): ?>
 									<li class="level1"><a href="<?php echo $_subcategory->getUrl() ?>"><span><?php echo $_subcategory->getName() ?></span></a></li>

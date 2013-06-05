@@ -4276,10 +4276,17 @@ footer:after,
 	display:inline-block;
 	vertical-align:top;
 	width: 190px;
+	margin-left: 10px;
 }
 .contentListSubMenu ul.lastSubmenuBlock{
-	margin-left: 20px;
+	margin-left: 0;
 }
 .contentListSubMenuColumn2{
 	width: 404px !important;
+}
+.contentListSubMenuColumn3{
+	width: 606px !important;
+}
+.contentListSubMenuColumn4{
+	width: 808px !important;
 }
