@@ -126,7 +126,7 @@
   width: 53px;
   height: 50px;
   background: url(../images/controlador-slide-home-produtos.png) no-repeat right top;
-  z-index: 100;
+  z-index: 1;
   cursor: pointer;
   text-indent: -9999em;
    position: absolute;
