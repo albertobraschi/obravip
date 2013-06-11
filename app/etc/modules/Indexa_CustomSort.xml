@@ -13,7 +13,7 @@
 <config>
     <modules>
         <Indexa_CustomSort>
-            <active>true</active>
+            <active>false</active>
             <codePool>local</codePool>
         </Indexa_CustomSort>
     </modules>
